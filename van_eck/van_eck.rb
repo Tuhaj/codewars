@@ -5,15 +5,12 @@ class VanEck
 
   def add_next_number
     rindex = @sequence[0..-2].rindex(@sequence[-1])
-    if rindex
-      @sequence << (@sequence.size - rindex -1)
-    else
-      @sequence << 0
-    end
+    next_number = rindex ? (@sequence.size - rindex -1) : 0
+    @sequence << next_number
   end
 
   def sequence(size)
-    return nil if size < 0
+    return nil if size < 1
     (size -1).times do
       add_next_number
     end
